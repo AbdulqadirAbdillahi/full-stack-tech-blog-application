@@ -83,6 +83,18 @@ function fetchPosts() {
         }</p><small>By: ${post.postedBy} on ${new Date(
           post.createdOn
         ).toLocaleString()}</small>`;
+
+        div.innerHTML = `
+          <h3>${post.title}</h3>
+          <p>${post.content}</p>
+          <small>By: ${post.postedBy || 'User'}</small>
+          
+          <div class="post-actions">
+            <button onclick="editPost(${post.id})">Edit ✍️</button>
+            <button onclick="deletePost(${post.id})" style="color: red;">Delete 🗑️</button>
+          </div>
+          <hr>
+        `;
         postsContainer.appendChild(div);
       });
     });
