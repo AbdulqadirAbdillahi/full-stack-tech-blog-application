@@ -7,13 +7,16 @@ body {
 }
 
 .container {
-    max-width: 400px;
-    margin: auto;
+    max-width: 600px;
+    margin: 25px auto;
     background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-top: 8px solid red;
 }
+
+
 
 input,
 button {
