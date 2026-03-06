@@ -79,13 +79,7 @@ function fetchPosts() {
       
       posts.forEach((post) => {
         const div = document.createElement("div");
-        div.innerHTML = `<h3>${post.title}</h3><p>${
-          post.content
-        }</p><small>By: ${post.postedBy} on ${new Date(
-          post.createdOn
-        ).toLocaleString()}</small>`;
-
-        // div.className = "post-card";
+        div.className = "post-card";
 
         div.innerHTML = `
           <h3>${post.title}</h3>
@@ -100,6 +94,7 @@ function fetchPosts() {
         postsContainer.appendChild(div);
       });
     });
+  
 }
 
 function createPost() {
@@ -146,10 +141,10 @@ async function deletePost(postId) {
 
 async function editPost(id) {
 
-  const editedTitle = prompt("Enter new title:");
-  const newEl = prompt("Enter new content:");
+  const newTitle = prompt("Enter new title:");
+  const newContent = prompt("Enter new content:");
 
-  if (editedTitle && newEl) {
+  if (newTitle && newContent) {
     const response = await fetch(`http://localhost:3001/api/posts/${id}`, {
       method: "PUT",
       headers: {
