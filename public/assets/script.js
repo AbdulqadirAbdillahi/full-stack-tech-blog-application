@@ -84,6 +84,8 @@ function fetchPosts() {
           post.createdOn
         ).toLocaleString()}</small>`;
 
+        // div.className = "post-card";
+
         div.innerHTML = `
           <h3>${post.title}</h3>
           <p>${post.content}</p>
