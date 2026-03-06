@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Registration</title>
+    <title>Football Tech Blog</title>
     <link rel="stylesheet" href="./assets/style.css">
 </head>
-
 <body>
-    <div class="container" id="auth-container">
-        <h2>Register</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="register()">Register</button>
-        <hr>
-        <h2>Login</h2>
+    <div id="auth-container" class="container">
+        <h2>Football Login</h2>
         <input type="email" id="login-email" placeholder="Email">
         <input type="password" id="login-password" placeholder="Password">
         <button onclick="login()">Login</button>
     </div>
 
-    <div class="container hidden" id="app-container">
-        <h2>Welcome</h2>
-        <button onclick="logout()">Logout</button>
+    <div id="app-container" class="container hidden">
+        <h2>Football Transfer & Tech News</h2>
+        <div class="filters">
+            <button onclick="fetchPosts()">All News</button>
+            <button onclick="fetchPosts(1)">Premier League</button>
+            <button onclick="fetchPosts(2)">Tech in Sport</button>
+        </div>
         <hr>
-        <h2>Create a Post</h2>
-        <input type="text" id="post-title" placeholder="Title">
+        <input type="text" id="post-title" placeholder="Article Title">
         <textarea id="post-content" placeholder="Content"></textarea>
-        <button onclick="createPost()">Submit Post</button>
-        <hr>
-        <h2>Posts</h2>
-        <button onclick="fetchPosts()">Load Posts</button>
+        <button onclick="createPost()">Post Update</button>
         <div id="posts"></div>
     </div>
-
     <script src="./assets/script.js"></script>
 </body>
-
 </html>
