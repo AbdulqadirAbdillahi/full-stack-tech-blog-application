@@ -105,3 +105,52 @@ function createPost() {
       fetchPosts();
     });
 }
+
+
+/////////////
+
+async function deletePost(postId) {
+  // 1. Double check with the user
+  if (!confirm("Delete this football post?")) return;
+
+  // 2. Send the delete request to the server
+  const response = await fetch(`http://localhost:3001/api/posts/${postId}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` }
+  });
+
+  // 3. If it worked, refresh the list
+  if (response.ok) {
+    alert("Post removed!");
+    fetchPosts(); 
+  } else {
+    alert("Error: You might not have permission.");
+  }
+}
+
+
+
+async function editPost(id) {
+
+  const editedTitle = prompt("Enter new title:");
+  const newEl = prompt("Enter new content:");
+
+  if (editedTitle && newEl) {
+    const response = await fetch(`http://localhost:3001/api/posts/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ title: newTitle, content: newContent })
+    });
+
+    // 3. Refresh the page if successful
+    if (response.ok) {
+      alert("Updated!");
+      fetchPosts();
+    }
+  }
+}
+  
+
