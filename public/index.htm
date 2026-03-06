@@ -14,17 +14,29 @@
 
     <div id="app-container" class="container hidden">
         <h2>Football Transfer & Tech News</h2>
+
         <div class="filters">
             <button onclick="fetchPosts()">All News</button>
             <button onclick="fetchPosts(1)">Premier League</button>
             <button onclick="fetchPosts(2)">Tech in Sport</button>
         </div>
         <hr>
-        <input type="text" id="post-title" placeholder="Article Title">
-        <textarea id="post-content" placeholder="Content"></textarea>
-        <button onclick="createPost()">Post Update</button>
-        <div id="posts"></div>
-    </div>
+
+        <div class="post-form">
+            <h3>Share an Update</h3>
+            <input type="text" id="post-title" placeholder="Article Title">
+            <textarea id="post-content" placeholder="Write your news ..."></textarea>
+
+            <label for="post-category">Post to Page:</label>
+            <select id="post-category">
+                <option value="1">Premier League</option>
+                <option value="2">Tech in Sport</option>
+            </select>
+
+            <button onclick="createPost()">Post Update</button>
+            
+            <div id="posts"></div>
+        </div>
     <script src="./assets/script.js"></script>
 </body>
 </html>

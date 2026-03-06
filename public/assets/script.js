@@ -68,6 +68,9 @@ function logout() {
 }
 
 function fetchPosts() {
+
+ 
+
   fetch("http://localhost:3001/api/posts", {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },
@@ -80,6 +83,7 @@ function fetchPosts() {
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.className = "post-card";
+        
 
         div.innerHTML = `
           <h3>${post.title}</h3>
@@ -100,6 +104,7 @@ function fetchPosts() {
 function createPost() {
   const title = document.getElementById("post-title").value;
   const content = document.getElementById("post-content").value;
+ 
   fetch("http://localhost:3001/api/posts", {
     method: "POST",
     headers: {
