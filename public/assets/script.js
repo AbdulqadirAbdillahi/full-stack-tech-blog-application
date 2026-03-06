@@ -76,6 +76,7 @@ function fetchPosts() {
     .then((posts) => {
       const postsContainer = document.getElementById("posts");
       postsContainer.innerHTML = "";
+      
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.innerHTML = `<h3>${post.title}</h3><p>${
@@ -90,7 +91,6 @@ function fetchPosts() {
           <h3>${post.title}</h3>
           <p>${post.content}</p>
           <small>By: ${post.postedBy || 'User'}</small>
-          
           <div class="post-actions">
             <button onclick="editPost(${post.id})">Edit ✍️</button>
             <button onclick="deletePost(${post.id})" style="color: red;">Delete 🗑️</button>
