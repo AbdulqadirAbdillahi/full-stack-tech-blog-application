@@ -10,10 +10,19 @@
         <input type="email" id="login-email" placeholder="Email">
         <input type="password" id="login-password" placeholder="Password">
         <button onclick="login()">Login</button>
+        <hr>
+        <h2>Register</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+    <button onclick="register()">Register</button>
+        <hr>
     </div>
 
     <div id="app-container" class="container hidden">
         <h2>Football Transfer & Tech News</h2>
+
+         <h2 id="posts-heading">All News</h2>
 
         <div class="filters">
             <button onclick="fetchPosts()">All News</button>
@@ -34,7 +43,9 @@
             </select>
 
             <button onclick="createPost()">Post Update</button>
-            
+
+            <button onclick="fetchPosts()">Load Posts</button>
+
             <div id="posts"></div>
         </div>
     <script src="./assets/script.js"></script>

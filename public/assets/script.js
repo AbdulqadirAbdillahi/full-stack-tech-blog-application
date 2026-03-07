@@ -11,10 +11,10 @@ function register() {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.errors) {
+      if(data.errors) {
         alert(data.errors[0].message);
-      } else {
-        alert("User registered successfully");
+      } else{
+         alert("User registered successfully");
       }
     })
     .catch((error) => {
@@ -35,6 +35,7 @@ function login() {
       // Save the token in the local storage
       if (data.token) {
         localStorage.setItem("authToken", data.token);
+        localStorage.setItem("username", data.username);
         token = data.token;
 
         alert("User Logged In successfully");
@@ -45,7 +46,6 @@ function login() {
         // Hide the auth container and show the app container as we're now logged in
         document.getElementById("auth-container").classList.add("hidden");
         document.getElementById("app-container").classList.remove("hidden");
-      } else {
         alert(data.message);
       }
     })
@@ -61,23 +61,27 @@ function logout() {
   }).then(() => {
     // Clear the token from the local storage as we're now logged out
     localStorage.removeItem("authToken");
+    localStorage.removeItem("username");
     token = null;
     document.getElementById("auth-container").classList.remove("hidden");
     document.getElementById("app-container").classList.add("hidden");
   });
 }
 
-function fetchPosts() {
+function fetchPosts(category) {
+
+  // console.log("Category clicked:", category);
 
   let url = "http://localhost:3001/api/posts";
 
   // If a category is selected, add query parameter
-  if (categoryId) {
-    url += `?category=${categoryId}`;
+  if (category) {
+    url += `?category=${category}`;
   }
+  // console.log("Fetching from:", url);
 
  
-  fetch("http://localhost:3001/api/posts", {
+  fetch(url, {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },
   })
@@ -110,6 +114,7 @@ function fetchPosts() {
 function createPost() {
   const title = document.getElementById("post-title").value;
   const content = document.getElementById("post-content").value;
+  const categoryId = document.getElementById("post-category").value;
  
   fetch("http://localhost:3001/api/posts", {
     method: "POST",
@@ -117,7 +122,7 @@ function createPost() {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ title, content, postedBy: "User" }),
+    body: JSON.stringify({ title, content,categoryId, postedBy: "User" }),
   })
     .then((res) => res.json())
     .then(() => {
