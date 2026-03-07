@@ -70,7 +70,7 @@ function logout() {
 
 function fetchPosts(category) {
 
-  // console.log("Category clicked:", category);
+  console.log("Category clicked:", category);
 
   let url = "http://localhost:3001/api/posts";
 
@@ -78,7 +78,7 @@ function fetchPosts(category) {
   if (category) {
     url += `?category=${category}`;
   }
-  // console.log("Fetching from:", url);
+  console.log("Fetching from:", url);
 
  
   fetch(url, {
