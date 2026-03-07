@@ -69,8 +69,14 @@ function logout() {
 
 function fetchPosts() {
 
- 
+  let url = "http://localhost:3001/api/posts";
 
+  // If a category is selected, add query parameter
+  if (categoryId) {
+    url += `?category=${categoryId}`;
+  }
+
+ 
   fetch("http://localhost:3001/api/posts", {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },

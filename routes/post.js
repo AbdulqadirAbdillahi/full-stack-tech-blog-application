@@ -20,10 +20,19 @@ app.post("/", async (req, res) => {
 app.get("/", async (req, res) => {
   try {
     const posts = await Post.findAll();
+    const category = req.query.category;
 
-    res.json(posts);
+    if(!category){
+      return res.json(posts);
+    }
+
+    const postsFiltered = posts.filter(post => post.categoryId == category);
+
+    res.json(postsFiltered);
+
   } catch (error) {
     res.status(500).json({ error: "Error retrieving posts", error });
+    
   }
 });
 
