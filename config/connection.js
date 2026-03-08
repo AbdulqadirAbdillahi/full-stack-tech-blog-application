@@ -1,12 +1,17 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
-// Use DATABASE_URL if on Render (external DB URL)
 const sequelize = process.env.DATABASE_URL
   ? new Sequelize(process.env.DATABASE_URL, {
       dialect: "postgres",
       protocol: "postgres",
-      logging: false,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      },
+      logging: false
     })
   : new Sequelize(
       process.env.DB_NAME,
@@ -16,7 +21,13 @@ const sequelize = process.env.DATABASE_URL
         host: process.env.DB_HOST,
         dialect: "postgres",
         port: process.env.DB_PORT || 5432,
-        logging: false,
+        dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false
+          }
+        },
+        logging: false
       }
     );
 
